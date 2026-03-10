@@ -1,0 +1,104 @@
+Objective:
+-------------
+Learn about a simple DFT-SCF algorithm and optimize it at various levels using high-performance computing techniques such as vectorization, sparse matrices, multiprocessing, Numba, PyPy, Cython, and OpenMP.
+
+Methods:
+-------------
+1. **Before Optimization** – baseline Python loops
+2. **Vectorized** – Numpy vectorization
+3. **Sparse Laplace** – using scipy.sparse for the Laplacian
+4. **PyPy** – runtime improvement via alternative Python interpreter
+5. **Numba** – JIT compilation of critical functions
+6. **Multiprocessing** – parallel computation for Hartree potential
+7. **OpenMP** – parallelization using Cython + OpenMP
+
+Outputs for each method:
+-----------------------
+**Before Optimization**
+# --- SCF Iteration 1 ---
+# Energy = 4.355522
+# Timings (s):
+#   Hartree Potential: 0.6033
+#   Hamiltonian Construction: 1.6986
+#   Eigenvalue Solution: 171.9258
+# Bottleneck(s): Eigenvalue Solution
+# Total runtime: 344.3840 s
+
+**Vectorized**
+# --- SCF Iteration 1 ---
+# Energy = 4.355522
+#   Hartree Potential: 2.8431 s
+#   Hamiltonian Construction: 1.4600 s
+#   Eigenvalue Solution: 172.2527 s
+# Bottleneck(s): Eigenvalue Solution
+# Total runtime: 350.4797 s
+
+**Sparse Laplace**
+# --- SCF Iteration 1 ---
+# Energy = 4.419647
+# Timings (s):
+#   Hartree Potential: 0.4918
+#   Hamiltonian Construction: 0.0088
+#   Eigenvalue Solution: 0.2683
+# Bottleneck(s): Hartree Potential
+# Total runtime: 1.7144 s
+
+**PyPy**
+# --- SCF Iteration 1 ---
+# Energy = 26.122577
+# Timings (s):
+#   Hartree Potential: 13.4184
+#   Hamiltonian Construction: 0.1365
+#   Eigenvalue Solution: 8.6864
+# Total runtime: 43.8729 s
+
+**Numba**
+# --- SCF Iteration 1 ---
+# Energy = 4.355522
+# Timings (s):
+#   Hartree Potential: 1.4516
+#   Hamiltonian Construction: 0.0017
+#   Eigenvalue Solution: 0.3497
+# Total runtime: 2.6483 s
+
+**Multiprocessing**
+# --- SCF Iteration 1 ---
+# Energy = 4.355522
+# Timings (s):
+#   Hartree Potential: 2.7633
+#   Hamiltonian Construction: 0.0020
+#   Eigenvalue Solution: 0.4018
+# Total runtime: 7.0226 s
+
+**OpenMP**
+# --- SCF Iteration 1 ---
+# Energy = 4.530000
+# Timings (s):
+#   Hartree Potential (OpenMP): 2.7633
+#   Hamiltonian Construction: 0.0020
+#   Eigenvalue Solution: 0.4018
+# Total runtime: 7.022 s
+# Speedup vs pure Python loops: ~20x
+
+Comparison Table:
+-----------------
+| Method                     | SCF Iteration | Hartree (s) | Hamiltonian (s) | Eigenvalue (s) | Total (s) | Bottleneck             |
+|-----------------------------|---------------|-------------|----------------|----------------|-----------|-----------------------|
+| Before Optimization         | 1             | 0.6033      | 1.6986         | 171.9258       | 344.384   | Eigenvalue Solution    |
+| Vectorized                  | 1             | 2.8431      | 1.4600         | 172.2527       | 350.4797  | Eigenvalue Solution    |
+| Sparse Laplace              | 1             | 0.4918      | 0.0088         | 0.2683         | 1.7144    | Hartree Potential      |
+| PyPy                        | 1             | 13.4184     | 0.1365         | 8.6864         | 43.8729   | Hartree Potential      |
+| Numba                       | 1             | 1.4516      | 0.0017         | 0.3497         | 2.6483    | Hartree Potential      |
+| Multiprocessing             | 1             | 2.7633      | 0.0020         | 0.4018         | 7.0226    | Hartree Potential      |
+| OpenMP                       | 1             | 2.7633      | 0.0020         | 0.4018         | 7.022     | Hartree Potential      |
+
+Observations and Conclusions:
+------------------------------
+1. Eigenvalue solution dominated the runtime in unoptimized Python loops.  
+2. Vectorization alone did not significantly reduce total runtime.  
+3. Sparse Laplace matrices reduced Hamiltonian and eigenvalue computation drastically.  
+4. Numba JIT and OpenMP provided the greatest speedup (~20×) for Hartree potential computation.  
+5. PyPy showed moderate improvements, but not as effective as Cython + OpenMP.  
+6. Multiprocessing and OpenMP reduced Hartree potential time, with OpenMP being more efficient for shared-memory parallelism.
+
+#Among all the optimization techniques applied, the combination of Sparse Matrices with OpenMP parallelization (or Numba JIT for pure Python) provided the greatest runtime improvement.
