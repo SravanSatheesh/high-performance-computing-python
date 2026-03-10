@@ -1,0 +1,28 @@
+In this exercise, we explored various optimization strategies for a simplified Density Functional Theory (DFT) algorithm. Among the methods applied, the most
+effective optimizations were:
+
+Sparse Matrix Representation – 
+By using scipy.sparse for the Laplacian operator, the Hamiltonian construction and eigenvalue solution were drastically 
+accelerated. This reduced both memory usage and computation time.
+
+OpenMP Parallelization (Cython + prange) – 
+The Hartree potential calculation, which involves nested loops over the grid, benefited significantly from 
+parallelization across multiple CPU cores.
+
+Numba JIT Compilation – 
+Pure Python functions for the Hartree potential were accelerated using Just-In-Time compilation, offering a very high speedup 
+without changing the algorithm’s structure.
+
+The most difficult areas to optimize were:
+Eigenvalue solution – Even with sparse matrices, diagonalization for large grids remains computationally expensive.
+Hartree potential – While parallelization helped, the algorithm still scales quadratically with grid size, making it the dominant cost for very large 
+systems.
+
+Trade-offs observed:
+Implementing OpenMP and Cython required additional setup (compilation, typed memoryviews), making development more complex compared to pure Python.
+Parallelization introduces overhead for thread management, so for very small grids, the speedup is less noticeable.
+Using sparse matrices can complicate code readability and requires careful handling to maintain numerical correctness.
+
+Overall, the combination of sparse matrices and OpenMP parallelization produced the largest speedup, reducing runtime from several minutes to just a 
+few seconds. Numba JIT also provided an excellent alternative for accelerating pure Python code. These results illustrate the importance of both algorithmic 
+improvements (sparse matrices) and hardware-aware parallelization (OpenMP/Numba) in high-performance scientific computing.
