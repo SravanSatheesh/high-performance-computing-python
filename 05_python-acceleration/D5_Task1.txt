@@ -1,0 +1,18 @@
+###Raw_Output###
+-----------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> py -3.11 "C:/Users/srava/Downloads/Exercise Sheet 5 5 Additional Material-20260227/Task_1_Numba.py"
+runtime without numba: 23.16872 Sekunden
+runtime with numba: 2.21258 Sekunden
+runtime with numba: 0.05409 Sekunden
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Run the script Task_1_Numba.py and compare the runtimes.
+The plain Python function took 23.17 seconds, the first run with Numba took 2.21 seconds due to just-in-time compilation, and the second run 
+was only 0.054 seconds because the compiled code was reused, showing a dramatic speedup.
+
+2. What stands out in the first vs. second run with Numba and why?
+The first run is slower because Numba compiles the function on the fly, while the second run is extremely fast since it uses the already compiled 
+machine code.
+
+3. Remove nopython=True as a test. What changes in terms of speed and why?
+Without nopython=True, Numba falls back to object mode, which keeps Python type checks, making execution significantly slower than nopython mode.

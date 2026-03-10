@@ -1,0 +1,28 @@
+1. Bubble Sort
+The bubble sort algorithm uses two nested loops. The outer loop runs n times, and for each iteration, the inner loop runs 
+approximately (n − i − 1) times. This results in about n(n − 1) / 2 comparisons, which grows proportionally to n².
+Time complexity:
+Worst case: O(n²)
+Average case: O(n²)
+Best case: O(n²)
+Since there is no early stopping condition in this implementation, all loop iterations are executed
+even if the list is already sorted. Therefore, bubble sort has quadratic time complexity and is
+inefficient for large datasets.
+
+2. Quicksort
+Quicksort follows the divide-and-conquer strategy. It selects a pivot element and divides the array
+into three parts: elements smaller than the pivot, the pivot itself, and elements greater than the
+pivot. It then recursively sorts the smaller subarrays. At each recursion level, all n elements are processed during 
+partitioning. If the pivot divides the array roughly in half, the recursion depth is about log n.
+Time complexity:
+Best case: O(n log n)
+Average case: O(n log n)
+Worst case: O(n²)
+The worst case occurs when the pivot produces highly unbalanced partitions. However, in practice, quicksort usually 
+performs in O(n log n) time.
+
+3. Comparison
+3.1 Bubble sort always runs in O(n²) time and becomes very slow for large inputs. Quicksort, on average, runs in O(n log n), which is significantly more efficient. 
+
+3.2 Bubble sort may still be useful for very small datasets or educational purposes due to its simplicity. 
+    Quicksort is generally preferred for large datasets and performance-critical applications.

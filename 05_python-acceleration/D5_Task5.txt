@@ -1,0 +1,28 @@
+###Outputs###
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task_5.py"
+
+Number of primes below 100000: 9592
+Runtime: 0.054872 seconds
+
+Number of primes below 500000: 41538
+Runtime: 0.619421 seconds
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\pypy3.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task_5.py"
+
+Number of primes below 100000: 9592
+Runtime: 0.020947 seconds
+
+Number of primes below 500000: 41538
+Runtime: 0.062811 seconds
+
+
+Analysis
+
+1. Does PyPy give a performance advantage?
+Yes. PyPy runs significantly faster than CPython for this code.
+Reason: The program is loop-heavy and written in pure Python, which allows PyPy’s JIT compiler to optimize repeated computations efficiently.
+
+2. Behavior for small vs. large n:
+Small n: Speedup is modest because PyPy’s JIT needs some warm-up time before optimizations are fully applied.
+Large n: Speedup is much more noticeable. Longer loops give PyPy’s JIT more opportunity to optimize, so computationally intensive tasks see the largest benefit.

@@ -1,0 +1,36 @@
+Task 5: Analysis of Profiling Statistics File analyzed: D1_task1.py
+
+1.  How many functions were called in total? 
+    A total of 1,000,012 function calls were made.
+
+2.  Which function was called most frequently? 
+    The method list.append() was called most frequently, with 1,000,000 calls.
+
+3.  Which function took the most time overall? 
+    The function time.sleep() took the most time overall, approximately 5.000 seconds.
+
+4.  How much time (in seconds) did the do_stuff() function take to
+    execute in total? 
+    The function do_stuff() took approximately 0.34 seconds in total (cumulative time).
+
+5.  How much time (in seconds) was spent in total in the main function
+    and its subfunctions? 
+    The main() function and all its subfunctions together took approximately 5.34 seconds in total (cumulative time).
+
+6.  Explain the meaning of ncalls. 
+    The column ‘ncalls’ shows how many times a function was called during the execution of the program.
+
+7.  What does the tottime column show? 
+    The ‘tottime’ column shows the total time spent inside the function itself (internal time). It does not include time spent in      subfunctions that were called by this function.
+
+8.  What does percall (first column) stand for?  
+    The first ‘percall’ column represents the average internal time per call. It is,calculated as: tottime / ncalls
+
+9.  What does the cumtime column mean? 
+    The ‘cumtime’ column shows the cumulative time spent in a function. This includes the time spent in the function itself plus the time    spent in all subfunctions it calls.
+
+10. What does the second percall stand for?
+    The second ‘percall’ column represents the average cumulative time per call. It is calculated as: cumtime / ncalls
+
+11. What is shown in the filename:lineno(function) column? 
+    This column shows the file name, the line number where the function is defined, and the function name. For built-in functions, it     displays that they are built-in methods instead of showing a file and line number.

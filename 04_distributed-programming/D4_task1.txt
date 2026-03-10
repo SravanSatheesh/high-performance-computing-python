@@ -1,0 +1,22 @@
+###output_of_running_in_Terminal 1(Start name server: python -m Pyro4.naming)###
+--------------------------------------------------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m Pyro4.naming
+Not starting broadcast server for localhost.
+NS running on localhost:9090 (127.0.0.1)
+Warning: HMAC key not set. Anyone can connect to this server!
+URI = PYRO:Pyro.NameServer@localhost:9090
+
+
+###output_of_running_in_Terminal 2(Start server: python D4_Task1_server.py)###
+-------------------------------------------------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task1_Server.py 
+Fibonacci-Service gestartet.
+URI: PYRO:obj_72044a5984f242cdbd444a15e89952a2@localhost:62521
+
+
+###output_of_running_in_Terminal 2(Run Client: python D4_Task1_client.py)###
+-----------------------------------------------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task1_Client.py 
+Fibonacci von 10 ist: 55
+Is 7 prime? True
+Is 10 prime? False

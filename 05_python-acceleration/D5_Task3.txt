@@ -1,0 +1,46 @@
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab\D5_Task3.py"
+
+==============================
+Number of steps: 1000
+Plain Python Time: 0.512347936630249 seconds
+Numba Run Time: 0.49561214447021484 seconds
+
+==============================
+Number of steps: 5000
+Plain Python Time: 2.91245698928833 seconds
+Numba Run Time: 0.0031020641326904297 seconds
+
+==============================
+Number of steps: 10000
+Plain Python Time: 5.845237016677856 seconds
+Numba Run Time: 0.006745815277099609 seconds
+
+Reflection:
+
+1. Exploring different numbers of timesteps (e.g., 1000, 5000, 10000):
+
+   By changing the total simulation steps, we can observe how computation time scales with problem size.
+
+2. Time saved by Numba:
+
+   - For 1000 steps: The speedup is minimal because the JIT compilation happens on the first run.
+   - For 5000 steps: Speedup ≈ 2.9125 / 0.0031 ≈ 940× faster.
+   - For 10000 steps: Speedup ≈ 5.8452 / 0.0067 ≈ 872× faster.
+
+   This shows that for larger simulations, Numba drastically reduces computation time, achieving nearly 900× faster execution than standard Python.
+
+3. Why this problem is suitable for Numba:
+
+   - It involves heavy use of nested loops.
+   - All calculations are numeric and straightforward.
+   - Data is stored in NumPy arrays with fixed types.
+   - There is no use of Python objects like lists or dictionaries.
+   
+   In general, Numba performs best when loops dominate runtime and data types are consistent and numeric.
+
+4. What happens if lists are used instead of NumPy arrays:
+
+   - Numba may switch to object mode, which severely reduces performance.
+   - Execution speed approaches that of regular Python.
+   
+   NumPy arrays are preferable because they provide fixed datatypes, contiguous memory, and allow Numba to apply low-level optimizations efficiently.

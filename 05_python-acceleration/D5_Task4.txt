@@ -1,0 +1,27 @@
+###outputs###
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task4_recursive.py"
+run time: 0.0461987520 seconds
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\pypy3.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task4_recursive.py"
+run time: 0.0437543186 seconds
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\pypy3.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task4_iterative.py"
+Iterative run time: 0.0315821047 seconds
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task4_iterative.py"
+Iterative run time: 0.0402183951 seconds
+
+What do you notice in comparison to the recursive version?
+1. Comparing recursive and iterative implementations:
+   - The recursive version shows only a slight improvement when running under PyPy compared to standard Python.  
+   - The iterative version benefits more clearly from PyPy’s JIT optimizations.
+
+2. Performance analysis:
+   - Speedup for the iterative version ≈ 0.04022 / 0.03158 ≈ 1.27×  
+   - This indicates PyPy executes the iterative version around 27% faster than CPython.  
+   - Overall, iterative code performs better than recursive code.
+
+3. Notes on PyPy and recursion:
+   - Recursive functions have repeated function call overhead, making them less suitable for JIT optimization.  
+   - Iterative loops allow PyPy to optimize efficiently, giving a more noticeable performance gain.

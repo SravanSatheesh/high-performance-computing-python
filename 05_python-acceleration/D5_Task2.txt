@@ -1,0 +1,43 @@
+Task 2: Fibonacci recursion with Numba 
+
+1. Measure the runtime for fib(35) in "Task_2_Numba.py."
+### output ###
+    PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab\D5_Task_2_Numba.py"
+    9227465
+    Runtime (pure Python): 1.7575759887695312
+runtime is 1.7575759887695312 seconds
+
+2. Accelerate the function with @jit(nopython=True). What happens?
+### Output ###
+    PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab\D5_Task_2_Numba.py"
+    9227465
+    Runtime with Numba: 0.3646552562713623
+    
+
+3. Compare the run time speed up with task 1
+
+Task 1 (Matrix Multiplication):
+Runtime without Numba: 14.69438 seconds
+Runtime with Numba (second run): 0.02540 seconds
+Speedup ≈ 14.69438 / 0.02540 ≈ 578× faster
+
+Task 2 (Fibonacci):
+Runtime without Numba: 1.75758 seconds
+Runtime with Numba (second run): 0.03833 seconds
+Speedup ≈ 1.75758 / 0.03833 ≈ 46× faster
+
+Comparison:
+The speedup in Task 1 is significantly larger than in Task 2.
+Matrix multiplication benefits much more from Numba than recursive Fibonacci.
+
+4. Why is the performance improvement lower than with matrix multiplication?
+The performance is lower because recursion creates many Python function calls and uses dynamic types. Numba optimizes numeric loops much better 
+than recursive functions. In contrast, matrix multiplication uses numeric arrays in loops, which Numba can fully compile to machine code.
+
+5. What types of functions and datatypes are not suitable for Numba?
+Functions that are recursive, use Python objects (strings, lists of mixed types, dictionaries), or highly dynamic Python features (generators, 
+closures, eval) are not suitable for Numba.
+
+6. What types of Python code benefit most from Numba?
+Code that is numeric-heavy, uses loops over arrays, and operates on floats or integers benefits the most. Examples include matrix operations, 
+numerical simulations, or any repeated calculations that Numba can compile to optimized machine code.

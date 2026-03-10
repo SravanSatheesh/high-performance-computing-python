@@ -1,0 +1,43 @@
+ Task_2
+
+. The final value output is not 2,000,000. 
+
+. The output got after running the code was:
+ PS C:\Users\srava\AppData\Local\Programs\Microsoft VS Code> & C:\Users\srava\AppData\Local\Programs\Python\Python313\python.exe c:/Users/srava/Downloads/Task_2.py
+ Final Counter Value: 1007359
+
+. Explain why the value may not be exactly 2,000,000. What is missing in the code to guarantee a correct result?
+
+The discrepancy is caused by a race condition.
+
+Even though multiprocessing.Value creates a shared memory variable accessible by multiple processes, it does not automatically coordinate simultaneous access. 
+The statement counter.value += 1, is actually composed of several internal steps:
+
+The current value is read
+The value is incremented
+The updated value is written back
+
+When both processes perform these steps concurrently, they can interfere with each other. For example, both processes might read the same value before 
+either writes the updated result, causing one increment to overwrite the other. Over many iterations, this leads to a significantly reduced final count.
+
+Missing component:
+The program lacks a synchronization mechanism (such as a lock) to ensure that updates to the shared counter occur in a controlled, exclusive manner.
+
+.Research the multiprocessing.Lock function and consider how it could be used in this example to fix the problem.
+
+The multiprocessing.Lock object is used to enforce mutual exclusion between processes. When a process holds the lock, other processes attempting to
+acquire it must wait until it is released.
+By protecting the increment operation with a lock:
+
+    with lock:
+       counter.value += 1
+
+we ensure that only one process at a time can modify the shared counter. This prevents overlapping updates and eliminates the race condition.
+After introducing the lock, all increments are properly counted and the final value becomes correct.
+
+
+
+
+#####RAW_OUTPUT_AFTER_CORRECTION_IN_CODE#####
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python313\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/Day3/D3_task2.py"
+Final Counter Value: 2000000

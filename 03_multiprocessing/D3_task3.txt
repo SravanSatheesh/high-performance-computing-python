@@ -1,0 +1,29 @@
+Task_3
+
+1. What happens if you set processes=1?
+If processes=1, the pool creates only one worker process. The tasks are then executed sequentially rather than in parallel. The program will still 
+work correctly, but there will be no parallel speedup.
+
+2. What happens if you set processes=10?
+With processes=10, the pool creates ten worker processes. Since there are ten input numbers, each process can handle one task. The computations run 
+in parallel, but creating many processes also introduces overhead. For such a small workload, the benefit is minimal.
+
+3. Is calculate_square computationally intensive enough to see a speed advantage with 10 processes?
+No. Squaring a number is a very lightweight operation. The overhead of creating and managing multiple processes is usually larger than the computation 
+itself. Therefore, using many processes does not provide a noticeable speed improvement for this task.
+
+4. How would you change the code to calculate the cube instead of the square?
+You would modify the function to raise the number to the power of 3 instead of 2.
+Example:
+def calculate_cube(number):
+    result = number ** 3
+    print(f"The cube of {number} is {result}")
+    return result
+
+Then replace the function call in pool.map:
+results = pool.map(calculate_cube, numbers)
+
+5. What happens when you use print() inside calculate_square? Is the output always in the correct order?
+No, the printed output is not guaranteed to appear in order. Because multiple processes run concurrently, their print statements can interleave unpredictably. 
+The order may sometimes look correct (as in this run), but it is not guaranteed.
+However, the list returned by pool.map does preserve the original input order, even if the printed lines appear shuffled.

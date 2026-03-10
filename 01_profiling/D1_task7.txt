@@ -1,0 +1,24 @@
+
+1. Number of function calls:
+A total of 1,000,011 function calls were made during the execution.
+
+2. Most frequent call:
+The method list.append() was called most frequently, 1,000,000 times.
+
+3. Longest time consumption:
+The function time.sleep() consumed the most cumulative time overall, approximately 5.001 seconds.
+
+4. Time required for individual functions:
+The function do_stuff() took approximately 0.374 seconds in total (cumulative time).
+
+5. Cumulative time in main:**
+The main() function and all its subfunctions together took approximately 5.387 seconds.
+
+6. Describe bottlenecks:
+
+time.sleep() in waste_time() is the main time bottleneck.
+do_stuff() is not a major bottleneck here (~0.374 s) but could grow for larger datasets.
+Loops with list.append() show many calls, which could be a bottleneck in large-scale operations.
+
+7. Brief summary:
+The profiling output shows that the majority of execution time is spent intentionally in waste_time() (via time.sleep()). While do_stuff() performs a million append operations, its execution time is relatively small compared to the sleep. Profiling highlights that the real performance bottleneck is not the number of calls, but where time is actually spent. Optimizations would focus on eliminating unnecessary delays or improving algorithm efficiency in loops.

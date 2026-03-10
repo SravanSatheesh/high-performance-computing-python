@@ -1,0 +1,130 @@
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m cProfile D1_task1.py        
+Factorial of 5: 120
+Generated 1000000 square values.
+Finished wasting time.
+         1000012 function calls in 5.353 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    5.353    5.353 {built-in method builtins.exec}
+        1    0.013    0.013    5.353    5.353 D1_task1.py:1(<module>)
+        1    0.000    0.000    5.340    5.340 D1_task1.py:38(main)
+        1    0.000    0.000    5.001    5.001 D1_task1.py:28(waste_time)
+        1    5.001    5.001    5.001    5.001 {built-in method time.sleep}
+        1    0.196    0.196    0.339    0.339 D1_task1.py:16(do_stuff)
+  1000000    0.143    0.000    0.143    0.000 {method 'append' of 'list' objects}
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 D1_task1.py:4(fact)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m cProfile -s tottime D1_task1.py     
+Factorial of 5: 120
+Generated 1000000 square values.
+Finished wasting time.
+         1000012 function calls in 5.353 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    5.000    5.000    5.000    5.000 {built-in method time.sleep}
+        1    0.196    0.196    0.339    0.339 D1_task1.py:16(do_stuff)
+  1000000    0.143    0.000    0.143    0.000 {method 'append' of 'list' objects}
+        1    0.013    0.013    5.353    5.353 D1_task1.py:1(<module>)
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    5.340    5.340 D1_task1.py:38(main)
+        1    0.000    0.000    5.001    5.001 D1_task1.py:28(waste_time)
+        1    0.000    0.000    5.353    5.353 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 D1_task1.py:4(fact)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m cProfile -s cumtime D1_task1.py     
+Factorial of 5: 120
+Generated 1000000 square values.
+Finished wasting time.
+         1000012 function calls in 5.358 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    5.358    5.358 {built-in method builtins.exec}
+        1    0.012    0.012    5.358    5.358 D1_task1.py:1(<module>)
+        1    0.000    0.000    5.345    5.345 D1_task1.py:38(main)
+        1    0.000    0.000    5.001    5.001 D1_task1.py:28(waste_time)
+        1    5.000    5.000    5.000    5.000 {built-in method time.sleep}
+        1    0.198    0.198    0.344    0.344 D1_task1.py:16(do_stuff)
+  1000000    0.146    0.000    0.146    0.000 {method 'append' of 'list' objects}
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 D1_task1.py:4(fact)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m cProfile -s ncalls D1_task1.py     
+Factorial of 5: 120
+Generated 1000000 square values.
+Finished wasting time.
+         1000012 function calls in 5.366 seconds
+
+   Ordered by: call count
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+  1000000    0.148    0.000    0.148    0.000 {method 'append' of 'list' objects}
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.print}
+        1    0.198    0.198    0.346    0.346 D1_task1.py:16(do_stuff)
+        1    0.019    0.019    5.366    5.366 D1_task1.py:1(<module>)
+        1    0.000    0.000    5.347    5.347 D1_task1.py:38(main)
+        1    0.000    0.000    0.000    0.000 D1_task1.py:4(fact)
+        1    0.000    0.000    5.000    5.000 D1_task1.py:28(waste_time)
+        1    5.000    5.000    5.000    5.000 {built-in method time.sleep}
+        1    0.000    0.000    5.366    5.366 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m cProfile -s name D1_task1.py     
+Factorial of 5: 120
+Generated 1000000 square values.
+Finished wasting time.
+         1000012 function calls in 5.396 seconds
+
+   Ordered by: function name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    5.396    5.396 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.print}
+        1    5.001    5.001    5.001    5.001 {built-in method time.sleep}
+  1000000    0.158    0.000    0.158    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.023    0.023    5.396    5.396 D1_task1.py:1(<module>)
+        1    0.213    0.213    0.371    0.371 D1_task1.py:16(do_stuff)
+        1    0.000    0.000    0.000    0.000 D1_task1.py:4(fact)
+        1    0.000    0.000    5.373    5.373 D1_task1.py:38(main)
+        1    0.000    0.000    5.001    5.001 D1_task1.py:28(waste_time)
+
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python -m cProfile -s filename D1_task1.py     
+Factorial of 5: 120
+Generated 1000000 square values.
+Finished wasting time.
+         1000012 function calls in 5.361 seconds
+
+   Ordered by: file name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.196    0.196    0.342    0.342 D1_task1.py:16(do_stuff)
+        1    0.018    0.018    5.361    5.361 D1_task1.py:1(<module>)
+        1    0.000    0.000    5.344    5.344 D1_task1.py:38(main)
+        1    0.000    0.000    0.000    0.000 D1_task1.py:4(fact)
+        1    0.000    0.000    5.002    5.002 D1_task1.py:28(waste_time)
+        1    5.001    5.001    5.001    5.001 {built-in method time.sleep}
+  1000000    0.145    0.000    0.145    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    5.361    5.361 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}

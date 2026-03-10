@@ -1,0 +1,19 @@
+1. Why is code profiling important? What advantages does it offer?
+Code profiling is important because it allows developers to measure the runtime behavior of their programs in a detailed and systematic way. It shows which functions are called, how often, and how much time they consume.
+Advantages of profiling include:
+
+Identifying performance bottlenecks: Pinpoints slow or inefficient parts of the code.
+Optimizing resource usage: Helps improve memory, CPU, and execution efficiency.
+Guiding improvements: Focuses optimization efforts where they matter most.
+Ensuring scalability: Detects potential issues before they grow with larger inputs.
+Evidence-based decisions: Provides concrete data rather than relying on guesswork.
+
+2. Why is it important to integrate profiling into the development process rather than waiting until a program is complete?
+Integrating profiling early has several benefits:
+
+Early detection of inefficiencies: Problems can be fixed before they become deeply embedded.
+Better design decisions: Developers can choose algorithms and data structures based on performance data.
+Avoiding expensive rewrites: Optimizing late in development may require major changes.
+Continuous performance monitoring: Helps maintain high performance as features are added.
+Improves overall quality: Early profiling encourages writing efficient and maintainable code from the start.
+

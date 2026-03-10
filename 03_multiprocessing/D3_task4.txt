@@ -1,0 +1,68 @@
+Task_4
+
+1. Why can't you see the errors in the main process without a queue?
+In multiprocessing, each child process runs in its own separate memory space. If an exception occurs inside a child process, it only terminates 
+that process and is not automatically propagated to the main process. Without using a communication mechanism such as a queue, the main process has
+no direct way to know whether a worker succeeded or failed. The queue is therefore used to explicitly send results and error messages back to the 
+parent process.
+
+2. What happens if you omit raise, i.e., do not handle the error?
+If the exception is neither caught nor re-raised inside the worker:
+.The child process will terminate when the error occurs.
+.The main process will usually continue running without clear information about the failure.
+.No result will be placed in the queue for that task.
+.Debugging becomes difficult because the failure is easy to overlook.
+In short, the error becomes mostly invisible to the main program.
+
+3. How can you ensure that all processes are terminated correctly despite errors?
+To guarantee proper cleanup:
+.Wrap worker code in try–except blocks to catch exceptions.
+.Always call join() on every process so the main program waits for their completion.
+.Optionally use terminate() in a finally block if processes must be forcefully stopped.
+.Use context managers or structured process management to avoid orphan processes.
+In this example, joining all processes after starting them ensures they finish properly even if some tasks fail.
+
+4. How would you do the same error handling with a pool?
+With a pool, error handling can be done by:
+.wrapping the worker function with try–except, or
+.using pool.apply_async() with an error_callback.
+Example using a pool:
+
+import multiprocessing
+import time
+
+def faulty_function(x):
+    time.sleep(1)
+    if x == 5:
+        raise ValueError("Something went wrong with value 5")
+    return x * x
+
+def safe_worker(x):
+    try:
+        return ("result", faulty_function(x))
+    except Exception as e:
+        return ("error", str(e))
+
+if __name__ == "__main__":
+    numbers = [1, 2, 3, 4, 5, 6]
+
+    with multiprocessing.Pool(processes=3) as pool:
+        results = pool.map(safe_worker, numbers)
+
+    for msg_type, content in results:
+        if msg_type == "result":
+            print("Ergebnis:", content)
+        else:
+            print("Fehler:", content)
+
+This approach ensures that exceptions inside pool workers are captured and safely reported to the main process.
+
+####output######
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python313\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/Day3/D3_task4.py"
+Ergebnis: 1
+Ergebnis: 4
+Ergebnis: 9
+Ergebnis: 16
+Fehler: Something went wrong with value 5
+Ergebnis: 36

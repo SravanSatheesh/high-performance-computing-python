@@ -1,0 +1,34 @@
+###Output_of_D4_Task_3_worker1.py###
+---------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task_3_worker1.py
+Worker1 ready.
+Worker1 calculating factorial(4)
+Worker1 calculating factorial(3)
+
+
+###Output_of_D4_Task_3_worker2.py###
+-------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task_3_worker2.py 
+Worker2 ready.                      
+Worker2 calculating factorial(6)    
+Worker2 calculating factorial(5)    
+       
+
+###Output_of_D4_Task_3_master_client.py###
+------------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task_3_master_client.py
+Results: [24, 720, 6, 120]
+
+###Comprehension_Questions###
+----------------------------
+1. What happens if a worker does not respond?
+The client will wait or fail with a timeout. That task will not complete.
+
+2. How could the system be made more robust against failures?
+Use retries, timeouts, or a task queue to reassign failed tasks.
+
+3. What are the advantages of load balancing in this scenario?
+Faster execution, prevents one server from being overloaded.
+
+4. Why are two worker servers used in this task and not just one?
+Demonstrates parallel processing and task distribution; one worker would be sequential, no distribution.

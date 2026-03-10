@@ -1,0 +1,21 @@
+2026-02-26 14:40:40,884 - Sending task 5 to task4.worker1
+2026-02-26 14:40:40,884 - Sending task 6 to task4.worker2
+2026-02-26 14:40:47,851 - Task 6 result: 720
+2026-02-26 14:40:47,852 - Task 5 result: 120
+2026-02-26 14:40:47,854 - Sending task 4 to task4.worker2
+2026-02-26 14:40:47,854 - Sending task 7 to task4.worker1
+2026-02-26 14:40:49,859 - Task 4 result: 24
+2026-02-26 14:40:49,859 - Task 7 result: 5040
+2026-02-26 14:40:49,859 - Sending task 3 to task4.worker2
+2026-02-26 14:40:49,859 - Sending task 8 to task4.worker1
+2026-02-26 14:40:51,862 - Task 8 result: 40320
+2026-02-26 14:40:51,863 - Task 3 result: 6
+2026-02-26 14:40:51,864 - Sending task 2 to task4.worker1
+2026-02-26 14:40:51,865 - Sending task 9 to task4.worker2
+2026-02-26 14:40:53,871 - Task 2 result: 2
+2026-02-26 14:40:53,872 - Task 9 result: 362880
+2026-02-26 14:40:53,873 - Sending task 10 to task4.worker1
+2026-02-26 14:40:53,874 - Sending task 1 to task4.worker2
+2026-02-26 14:40:55,877 - Task 10 result: 3628800
+2026-02-26 14:40:55,878 - Task 1 result: 1
+2026-02-26 14:40:55,881 - All tasks completed.

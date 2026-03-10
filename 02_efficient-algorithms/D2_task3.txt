@@ -1,0 +1,32 @@
+Example 1: Binary Search
+
+1. Why does binary search only work on sorted arrays?
+
+Binary search works by comparing the target value to the middle element of the array and then deciding whether to search 
+the left half or the right half. This only works if the array is sorted because only then can we be sure that all 
+smaller values are on the left and all larger values are on the right. If the array is not sorted, this assumption 
+is no longer valid, and the algorithm might completely miss the target value.
+
+2. What would be the time complexity of binary search on an unsorted array?
+
+Binary search doesn’t really work correctly on an unsorted array. In that case, the only way to reliably find the target 
+would be to check each element one by one, which is essentially a linear search. Therefore, the time complexity would be 
+O(n) in the worst case.
+
+Example 2: Matrix Multiplication
+
+1. Why is the complexity O(n³) for three nested loops?
+
+When multiplying two square matrices of size n × n using three nested loops:
+The outer loop runs n times (once for each row of the first matrix).
+The middle loop runs n times (once for each column of the second matrix).
+The innermost loop runs n times (to calculate the sum of products for each element).
+So in total, we perform roughly n × n × n = n³ operations, which is why the time complexity is O(n³).
+
+2. What options do you know for optimizing matrix multiplication?
+
+There are several ways to make matrix multiplication faster:
+Use libraries like NumPy in Python, which are highly optimized.
+Apply Strassen’s algorithm, which reduces the complexity to around O(n^2.81).
+Use block or tiled multiplication, which improves how data fits in the CPU cache.
+Take advantage of parallel processing or GPU acceleration for very large matrices.

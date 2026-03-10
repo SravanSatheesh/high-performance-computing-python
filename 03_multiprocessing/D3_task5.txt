@@ -1,0 +1,36 @@
+TAsk_5
+
+1. Which variant was faster? Why?
+The sequential version was faster.
+Although the parallel version uses multiprocessing, the task (summing squares) is relatively lightweight. The overhead of creating worker processes,
+distributing data, and collecting results is larger than the actual computation time. Therefore, the sequential approach performs better in this case.
+
+2. Why is multiprocessing not necessarily worthwhile for this task?
+Multiprocessing introduces additional costs such as:
+.process creation
+.inter-process communication
+.task scheduling
+For moderately sized or simple computations like this one, these overheads outweigh the benefits of parallel execution. As a result, multiprocessing does 
+not provide a speed advantage here.
+
+3. What could be done to make the parallel code more efficient?
+Several improvements are possible:
+.Match the number of processes to the number of CPU cores
+.Use larger work chunks to reduce communication overhead
+.Avoid creating more chunks than necessary
+.Increase the problem size (n) so computation dominates overhead
+.Reuse the pool instead of creating it repeatedly in tight loops
+These changes help improve the computation-to-overhead ratio.
+
+4. What happens when n is very small? Why is the parallel version slower?
+When n is very small, the actual computation is trivial and finishes very quickly. However, multiprocessing still incurs fixed overhead (process startup, 
+data transfer, synchronization). Because this overhead dominates the runtime, the parallel version becomes noticeably slower than the sequential one.
+
+5. What types of tasks are not suitable for multiprocessing?
+Multiprocessing is generally inefficient for:
+.very small or fast computations
+.I/O-bound tasks (e.g., file or network operations)
+.tasks requiring frequent communication between processes
+.workloads with many tiny subtasks
+.problems where data transfer between processes is large
+Such tasks either do not benefit from parallel CPU usage or suffer from excessive overhead.

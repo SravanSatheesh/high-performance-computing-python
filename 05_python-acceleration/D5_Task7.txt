@@ -1,0 +1,33 @@
+###outputs###
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task7.py"
+Enter n: 12
+
+Fortran result: 650
+Fortran runtime: 1.532470884308218e-05 seconds
+
+Python result: 650
+Python runtime: 9.014660726547247e-06 seconds
+
+Results equal: True
+
+1. Write a new Fortran function sum_of_squares(n) that calculates the sum of squares from 1 to n
+
+module=>
+
+    module squares_module
+    contains
+
+    function sum_of_squares(n) result(res)
+        integer, intent(in) :: n
+        integer :: i
+        integer(kind=8) :: res
+
+        res = 0
+        do i = 1, n
+            res = res + i*i
+        end do
+
+    end function sum_of_squares
+
+    end module squares_module

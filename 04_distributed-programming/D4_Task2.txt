@@ -1,0 +1,33 @@
+###Output_of_D4_Task_2_temperature_server.py###
+-----------------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task_2_temperature_server.py
+Temperature service started.
+URI: PYRO:obj_001ecbc4aae54e67a3ef2a412947cce2@localhost:63182
+
+
+###Output_of_D4_Task_2_temperature_client.py
+---------------------------------------------
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> python D4_Task_2_temperature_client.py
+25°C in Fahrenheit: 77.0
+98.6°F in Celsius: 37.0
+
+
+### Comprehensive_Questions###
+--------------------------------
+1. Why central simple services?
+Providing simple services centrally avoids code duplication, ensures consistent results, and simplifies maintenance because updates only need to be
+done in one place.
+
+2. Advantages of "one service, many clients"?
+The model improves scalability and resource efficiency. Multiple clients can reuse the same service, reducing redundant implementations and making 
+system updates easier.
+
+3. How could the service be expanded?
+The service can be extended by adding new methods, for example:
+.to_kelvin()
+.pressure conversions
+.unit conversion APIs
+
+4. What happens if two clients use the service simultaneously?
+Pyro handles multiple requests by processing them sequentially or concurrently (depending on configuration). Both clients can access the service, 
+but heavy load may affect performance.

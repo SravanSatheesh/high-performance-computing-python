@@ -1,0 +1,9 @@
+Task_1
+
+#######raw_output#######
+
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python313\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/Day3/D3_task1"
+sequential result (number of digits): 456574
+sequential execution time: 2.49 seconds
+parallel result (number of digits): 456574
+parallel execution time: 0.54 seconds

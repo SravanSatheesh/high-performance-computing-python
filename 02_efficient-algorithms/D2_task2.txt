@@ -1,0 +1,13 @@
+1. The recursive algorithm `fibonacci_recursive(n)` is inefficient because it recalculates the same Fibonacci numbers multiple times, 
+   leading to exponential growth in the number of function calls (O(2^n)).
+
+2. The memoized algorithm `fibonacci_memoized(n)` has time complexity O(n) because each Fibonacci number is calculated only once 
+   and stored in the `memo` dictionary for fast retrieval.
+
+3. The dictionary `memo` stores previously computed Fibonacci numbers to avoid redundant calculations, acting as a cache.
+
+4. Calling the memoized algorithm with very large n (e.g., 10,000) may cause a RecursionError due to Python's recursion 
+   limit, even though memoization reduces computation time.
+
+5. To improve further for very large n, use an iterative approach that calculates Fibonacci numbers in a loop, avoiding 
+   recursion and allowing computation with O(n) time and O(1) space.

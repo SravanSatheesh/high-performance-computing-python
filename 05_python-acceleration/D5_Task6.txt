@@ -1,0 +1,24 @@
+###Outputs###
+
+Small n:
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task_6_f2py.py"
+Fibonacci(10) = 55
+
+Larger n (n = 35):
+PS S:\Studies and Docs\TU Dortmund\SEMESTER 3\python lab> & C:\Users\srava\AppData\Local\Programs\Python\Python314\python.exe "s:/Studies and Docs/TU Dortmund/SEMESTER 3/python lab/D5_Task_6_f2py.py"
+Fortran Fibonacci(35) = 9227465
+Fortran runtime: 0.012034 seconds
+Python Fibonacci(35) = 9227465
+Python runtime: 1.785421 seconds
+
+
+Analysis
+
+Q. Why is the Fortran implementation faster?
+.Compiled language: Fortran code is translated directly into optimized machine code before execution.
+.Native execution: The computation runs entirely in compiled code without Python interpreter overhead.
+.Static typing: Fortran uses static types, allowing faster numerical operations.
+.Python overhead: Recursive Python calls are slower due to:
+               .Interpreter overhead for every function call
+               .Dynamic typing
+               .Expensive stack handling
